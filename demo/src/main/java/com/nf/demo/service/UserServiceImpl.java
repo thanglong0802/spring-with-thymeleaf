@@ -8,8 +8,6 @@ import org.springframework.web.context.annotation.RequestScope;
 @Service
 @RequestScope
 public class UserServiceImpl implements UserService {
-
-    private User user;
     private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
@@ -17,26 +15,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerAccount(User user) {
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 
-    @Override
-    public User loginAccount(String username, String password) {
-        validateUserName(username);
-        validatePassword(password);
-        return user;
-    }
+//    @Override
+//    public User loginAccount(String username, String password) {
+//        validateUserName(username);
+//        validatePassword(password);
+//        return user;
+//    }
 
-    private void validateUserName(String name) {
-        if(!userRepository.findByUserName(user.getUserName()).getUserName().equals(name)) {
-            throw new RuntimeException("UserNameNotFound");
-        }
-    }
+//    private void validateUserName(String name) {
+//        if(!userRepository.findByUserName(user.getUserName()).getUserName().equals(name)) {
+//            throw new RuntimeException("UserNameNotFound");
+//        }
+//    }
 
-    private void validatePassword(String password) {
-        if (!userRepository.findByUserName(user.getUserName()).getPassword().equals(password)) {
-            throw new RuntimeException("PasswordIsNotCorrect");
-        }
-    }
+//    private void validatePassword(String password) {
+//        if (!userRepository.findByUserName(user.getUserName()).getPassword().equals(password)) {
+//            throw new RuntimeException("PasswordIsNotCorrect");
+//        }
+//    }
 }
