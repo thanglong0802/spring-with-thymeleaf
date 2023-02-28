@@ -1,66 +1,59 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-/* body {
-  font-family: arial;
-  font-size: 13px;
-  color: #333;
-} */
-
-html,
 body {
-    width: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
-.box {
-    text-align: center;
-    background: #181818;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    margin-bottom: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     width: 400px;
-    height: auto;
-    padding: 25px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0px 0px 20px 0px #000;
 }
-.box h1 {
-    color: #fff;
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
-.box input[type="password"],
-.box input[type="text"] {
-    background: none;
-    outline: none;
-    width: 210px;
-    height: 40px;
-    border-radius: 40px;
-    padding: 0px 15px;
-    margin: 15px 0px;
-    border: solid 2px #002cff;
-    transition: 1s;
-    color: #fff;
+
+label {
+    margin-bottom: 10px;
 }
-.box input[type="password"]:focus,
-.box input[type="text"]:focus {
-    width: 320px;
-    border-color: chartreuse;
-    transition: 1s;
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    padding: 10px;
+    width: 380px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-.box input[type="submit"] {
-    background: none;
-    outline: none;
-    width: 160px;
-    height: 40px;
-    border-radius: 40px;
-    margin: 15px 0px;
-    border: solid 2px #002cff;
-    color: #fff;
-    font-size: 18px;
-    transition: 1s;
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
-.box input[type="submit"]:hover {
-    background: #002cff;
-    transition: 1s;
+
+a {
+    text-decoration: none;
 }

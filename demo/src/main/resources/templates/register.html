@@ -6,20 +6,29 @@
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-    <div class="register">
-        <!--/*@thymesVar id="user" type=""*/-->
-        <form method="post" th:action="@{/register}" class="box" th:object="${user}">
-            <input type="text" th:field="*{userName}" placeholder="Họ tên" />
-            <input type="text" th:field="*{email}" placeholder="Email" />
-            <input type="password" th:field="*{password}" placeholder="Mật khẩu" />
-            <input type="submit" value="Đăng ký" />
+    <div class="container">
+        <h1>Đăng ký tài khoản</h1>
+        <form method="post" th:action="@{/register}" th:object="${user}">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập:</label>
+                <input type="text" id="username" name="username" th:field="*{userName}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu:</label>
+                <input type="password" id="password" name="password" th:field="*{password}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:field="*{email}"/>
+            </div>
+
+            <div class="form-group or-login">
+                <input type="submit" value="Đăng ký" />
+                <p>hoặc <a href="./login.html">Đăng nhập</a></p>
+            </div>
         </form>
     </div>
-
-    <script>
-        // const submitSuccess = () => {
-        //     alert("Đăng ký thành công");
-        // }
-    </script>
 </body>
 </html>

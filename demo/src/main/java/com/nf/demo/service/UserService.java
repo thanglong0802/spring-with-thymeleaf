@@ -4,5 +4,5 @@ import com.nf.demo.model.User;
 
 public interface UserService {
     User registerAccount(User user);
-    User loginAccount(User user);
+    User loginAccount(String username, String password);
 }

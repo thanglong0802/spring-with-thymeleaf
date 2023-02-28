@@ -7,17 +7,25 @@
 </head>
 <body>
 <div class="register">
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username"/>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"/>
-        </div>
-        <button type="submit">Login</button>
-    </form>
+    <div class="container">
+        <h1>Đăng nhập tài khoản</h1>
+        <form th:action="@{/login}" th:method="post" th:object="${userLogin}" >
+            <div class="form-group">
+                <label for="username">Tên đăng nhập:</label>
+                <input type="text" id="username" name="username" th:object="${userLogin.userName}" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu:</label>
+                <input type="password" id="password" name="password" th:object="${userLogin.password}" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Đăng nhập" />
+                <p>hoặc <a href="./register.html">Đăng ký</a></p>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
