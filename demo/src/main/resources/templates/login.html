@@ -9,15 +9,15 @@
 <div class="register">
     <div class="container">
         <h1>Đăng nhập tài khoản</h1>
-        <form th:action="@{/login}" th:method="post" th:object="${userLogin}" >
+        <form th:action="@{/login}" method="post" >
             <div class="form-group">
                 <label for="username">Tên đăng nhập:</label>
-                <input type="text" id="username" name="username" th:object="${userLogin.userName}" />
+                <input type="text" id="username" name="username"/>
             </div>
 
             <div class="form-group">
                 <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" name="password" th:object="${userLogin.password}" />
+                <input type="password" id="password" name="password"/>
             </div>
 
             <div class="form-group">

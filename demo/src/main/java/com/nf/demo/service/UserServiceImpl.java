@@ -5,6 +5,8 @@ import com.nf.demo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
 
+import java.util.List;
+
 @Service
 @RequestScope
 public class UserServiceImpl implements UserService {
@@ -14,24 +16,37 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    private User user;
+
     @Override
     public User createUser(User user) {
-        return userRepository.save(user);
+        if (checkEmail(user.getEmail()) || checkUserName(user.getUserName())) {
+            System.out.println("EmailOrUserNameExist");
+        } else {
+            return userRepository.save(user);
+        }
+        return null;
     }
 
-//    @Override
-//    public User loginAccount(String username, String password) {
-//        validateUserName(username);
-//        validatePassword(password);
-//        return user;
-//    }
+    @Override
+    public User loginUser(String name) {
+        return userRepository.findByUserName(name);
+    }
+
+    private boolean checkUserName(String userName) {
+        return userRepository.existsByUserName(userName);
+    }
+
+    private boolean checkEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
 
 //    private void validateUserName(String name) {
 //        if(!userRepository.findByUserName(user.getUserName()).getUserName().equals(name)) {
 //            throw new RuntimeException("UserNameNotFound");
 //        }
 //    }
-
+//
 //    private void validatePassword(String password) {
 //        if (!userRepository.findByUserName(user.getUserName()).getPassword().equals(password)) {
 //            throw new RuntimeException("PasswordIsNotCorrect");
