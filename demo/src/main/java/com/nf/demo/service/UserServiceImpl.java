@@ -5,8 +5,6 @@ import com.nf.demo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
 
-import java.util.List;
-
 @Service
 @RequestScope
 public class UserServiceImpl implements UserService {

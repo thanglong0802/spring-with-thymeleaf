@@ -7,9 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
-import java.util.List;
-
 @Controller
 public class HomeController {
     @Autowired
@@ -20,7 +17,7 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/signin")
     public String login() {
         return "login";
     }
@@ -46,12 +43,19 @@ public class HomeController {
 
         return "redirect:/register";
     }
-    @PostMapping("/login")
-    public String login(@RequestParam("username") String userName, @RequestParam("password") String password) {
+    @PostMapping("/signin")
+    public String login(@RequestParam("username") String userName, @RequestParam("password") String password, Model model) {
         User user = userService.loginUser(userName);
         if (user != null && user.getPassword().equals(password)) {
+            model.addAttribute("userName", user.getUserName());
             return "success";
         }
         return "login";
     }
+
+//    @GetMapping("/signin")
+//    public String helloUser(Model model) {
+//        model.addAttribute("userName", contextHolderConfig.getLoggedInUserName());
+//        return "success";
+//    }
 }
