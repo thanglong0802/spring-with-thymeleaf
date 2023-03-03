@@ -8,21 +8,20 @@
 <body>
     <div class="container">
         <h1>Đăng ký tài khoản</h1>
-<!--        <form method="post" th:action="@{/register}" th:object="${user}">-->
         <form method="post" th:action="@{/createUser}">
             <div class="form-group">
                 <label for="username">Tên đăng nhập:</label>
-                <input type="text" id="username" name="userName"/>
+                <input type="text" id="username" name="userName" th:required/>
             </div>
 
             <div class="form-group">
                 <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" name="password"/>
+                <input type="text" id="password" name="password" th:required/>
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email"/>
+                <input type="email" id="email" name="email" th:required/>
             </div>
 
             <div class="form-group or-login">
@@ -31,5 +30,38 @@
             </div>
         </form>
     </div>
+
+    <script>
+        document.getElementById("username").addEventListener("input", function(event) {
+            let username = event.target.value;
+            const regex = /^[a-zA-Z0-9_-]{6,16}$/;
+            if (!regex.test(username)) {
+                event.target.setCustomValidity("Tên người dùng không hợp lệ, tên người dùng tối thiểu 6 ký tự");
+            } else {
+                event.target.setCustomValidity("");
+            }
+        });
+
+        document.getElementById("password").addEventListener("input", function(event) {
+            let password = event.target.value;
+            // const regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$/;
+            const regex = /^[a-zA-Z0-9_-]{8,16}$/;
+            if (!regex.test(password)) {
+                event.target.setCustomValidity("Mật khẩu tối thiểu 8 ký tự");
+            } else {
+                event.target.setCustomValidity("");
+            }
+        });
+
+        // document.getElementById("email").addEventListener("input", function(event) {
+        //     let email = event.target.value;
+        //     const regex = /^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$/;
+        //     if (!regex.test(email)) {
+        //         event.target.setCustomValidity("Địa chỉ email không hợp lệ");
+        //     } else {
+        //         event.target.setCustomValidity("");
+        //     }
+        // });
+    </script>
 </body>
 </html>

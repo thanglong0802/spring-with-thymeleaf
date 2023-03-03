@@ -29,18 +29,20 @@ public class HomeController {
     }
 
     @PostMapping("/createUser")
-    public String createUser(@ModelAttribute User user) {
+    public String createUser(@RequestParam String userName, @RequestParam String password, @RequestParam String email, @ModelAttribute User user) {
 //        boolean checkEmail = userService.checkEmail(user.getEmail());
 //        if (checkEmail) {
 //            System.out.println("Email Exist");
 //        }
-        User userCreate = userService.createUser(user);
-        if (userCreate != null) {
-            System.out.println("Register Successfully");
-        } else {
-            System.out.println("Register fail");
+        boolean validate = userService.validateUser(userName, password, email);
+        if (validate) {
+            User userCreate = userService.createUser(user);
+            if (userCreate != null) {
+                System.out.println("Register Successfully");
+            } else {
+                System.out.println("Register fail");
+            }
         }
-
         return "redirect:/register";
     }
     @PostMapping("/signin")
@@ -52,10 +54,4 @@ public class HomeController {
         }
         return "login";
     }
-
-//    @GetMapping("/signin")
-//    public String helloUser(Model model) {
-//        model.addAttribute("userName", contextHolderConfig.getLoggedInUserName());
-//        return "success";
-//    }
 }
